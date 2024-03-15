@@ -14,7 +14,7 @@ public class PostsMapper {
     private final LikesMapper likesMapper;
     public PostsDTO toDto(PostsEntity postsEntity) {
         return PostsDTO.builder()
-                .id(postsEntity.getPosid())
+                .id(postsEntity.getPostsId())
                 .name(postsEntity.getName())
                 .comentList(postsEntity.getComentList().stream()
                         .map(comentMapper::comentDTO)
@@ -27,7 +27,7 @@ public class PostsMapper {
     }
     public PostsEntity toEntity(PostsDTO postsDTO) {
         return PostsEntity.builder()
-                .posid(postsDTO.getId())
+                .postsId(postsDTO.getId())
                 .name(postsDTO.getName())
                 .comentList(postsDTO.getComentList().stream()
                         .map(comentMapper::toEntity)

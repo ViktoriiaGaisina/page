@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "лайк")
 public class LikesDTO {
     private Long id;
     private String name;

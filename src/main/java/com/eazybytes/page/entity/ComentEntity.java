@@ -1,8 +1,7 @@
 package com.eazybytes.page.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Builder
@@ -15,13 +14,13 @@ import java.util.List;
 public class ComentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "coment_id")
-    private Long comid;
+    @Column(name = "coment_id_pk")
+    private Long comentId;
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "posts")
-    private PostsEntity posts;
+    @JoinColumn(name = "posts_id_fk")
+    private PostsEntity post;
 
     @OneToMany(mappedBy = "coment")
     private List<LikesEntity> likesList;

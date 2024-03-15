@@ -1,6 +1,6 @@
 package com.eazybytes.page.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -15,10 +15,10 @@ import java.util.List;
 public class UsersEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "posts_id")
+    @Column(name = "users_id_pk")
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     private List<PostsEntity> postsList;
 }

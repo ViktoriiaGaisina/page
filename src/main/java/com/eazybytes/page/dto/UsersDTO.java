@@ -13,7 +13,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(description = "пользователь")
 public class UsersDTO {
     private Long id;
     private String name;

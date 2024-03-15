@@ -14,7 +14,7 @@ public class ComentMapper {
 
     public ComentDTO comentDTO(ComentEntity comentEntity) {
         return ComentDTO.builder()
-                .id(comentEntity.getComid())
+                .id(comentEntity.getComentId())
                 .name(comentEntity.getName())
                 .likesList(comentEntity.getLikesList().stream()
                         .map(likesMapper::toDto)
@@ -24,7 +24,7 @@ public class ComentMapper {
     }
     public ComentEntity toEntity(ComentDTO comentDTO) {
         return ComentEntity.builder()
-                .comid(comentDTO.getId())
+                .comentId(comentDTO.getId())
                 .name(comentDTO.getName())
                 .likesList(comentDTO.getLikesList().stream()
                         .map(likesMapper::toEntity)
