@@ -25,8 +25,8 @@ public class ComentController {
         return comentService.createComent(postsId, comentDTO );
     }
     @Operation(description= "Создать лайк под постом")
-    @PostMapping("{postsId}/likes")
-    public void createLikes(@PathVariable Long postsId, @RequestBody LikesDTO likesDTO) {
-        postsService.createLikes(postsId, likesDTO);
+    @PostMapping("/like")
+    public void createLikes(@RequestParam Long postsId, @RequestParam Long userId) {
+        postsService.createAndUpdateLikes(postsId, userId);
     }
 }

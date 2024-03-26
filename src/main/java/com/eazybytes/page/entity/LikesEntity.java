@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Builder
 @AllArgsConstructor
@@ -18,7 +19,9 @@ public class LikesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "likes_id_pk")
     private Long likeId;
-    private String name;
+
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "posts_id_fk")
@@ -27,5 +30,13 @@ public class LikesEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "coment_id_fk")
     private ComentEntity coment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="users_id_fk")
+    private UsersEntity user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="users_id_fk")
+    private PostsEntity posts;
 
 }

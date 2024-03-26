@@ -21,7 +21,6 @@ public class ComentService {
     private final ComentRepository comentRepository;
     private final PostsRepository postsRepository;
     private final ComentMapper comentMapper;
-    private final LikesMapper likesMapper;
     private final PostsMapper postsMapper;
 
     @Transactional

@@ -14,5 +14,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LikesDTO {
     private Long id;
-    private String name;
 }

@@ -3,6 +3,7 @@ package com.eazybytes.page.entity;
 import javax.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -18,7 +19,13 @@ public class UsersEntity {
     @Column(name = "users_id_pk")
     private Long id;
     private String name;
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
 
     @OneToMany(mappedBy = "user")
     private List<PostsEntity> postsList;
+
+    @OneToMany(mappedBy = "user")
+    private List<LikesEntity> likesEntities;
+
 }
