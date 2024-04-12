@@ -19,10 +19,10 @@ public class PostsMapper {
                 .comentList(postsEntity.getComentList().stream()
                         .map(comentMapper::comentDTO)
                         .toList())
-                .likesList(postsEntity.getLikesList().stream()
+                .likesList(postsEntity.getLikesList()!=null?postsEntity.getLikesList().stream()
                         .map(likesMapper::toDto)
-                        .toList())
-                .totaLikeToPosts(postsEntity.getLikesList().size())
+                        .toList():null)
+                .totaLikeToPosts(postsEntity.getLikesList()!=null?postsEntity.getLikesList().size():null)
                 .build();
     }
     public PostsEntity toEntity(PostsDTO postsDTO) {

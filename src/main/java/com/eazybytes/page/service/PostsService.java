@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PostsService {
@@ -56,25 +58,33 @@ public class PostsService {
                 .orElseThrow(() -> new NotFoundException("не найдено по айди"));
         UsersEntity user = usersRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("не найден"));
+        Long likeId = getLike(user.getLikesEntities(), postsId);
+        if (likeId != null) {
+            deleteLikesById(likeId, post, user);
+        } else {
+            LikesEntity like = new LikesEntity();
+            like.setPost(post);
+            LikesEntity likesEntitySave = likesRepository.save(like);
+            user.getLikesEntities().add(likesEntitySave);
+            usersRepository.save(user);
+            post.getLikesList().add(likesEntitySave);
+            postsRepository.save(post);
 
-        for (LikesEntity likes : user.getLikesEntities()) {
-            if (likes.getPost().getPostsId().equals(postsId)) {
-                final Long likeId = likes.getLikeId();
-                user.getLikesEntities().removeIf(like -> like.getLikeId().equals(likeId));
-                usersRepository.save(user);
-                post.getLikesList().removeIf(lik ->lik.getLikeId().equals(likeId));
-                postsRepository.save(post);
-                likesRepository.delete(likes);
-            } else {
-                LikesEntity like = new LikesEntity();
-                like.setPost(post);
-                LikesEntity likesEntitySave = likesRepository.save(like);
-                user.getLikesEntities().add(likesEntitySave);
-                usersRepository.save(user);
-                post.getLikesList().add(likesEntitySave);
-                postsRepository.save(post);
-
-            }
         }
+    }
+
+    private void deleteLikesById(long likeId, PostsEntity post, UsersEntity user) {
+        user.getLikesEntities().removeIf(like -> like.getLikeId().equals(likeId));
+        usersRepository.save(user);
+        post.getLikesList().removeIf(lik -> lik.getLikeId().equals(likeId));
+        postsRepository.save(post);
+        likesRepository.deleteById(likeId);
+    }
+
+    private Long getLike(List<LikesEntity> likes, Long postsId) {
+        return likes.stream()
+                .filter(tmp -> tmp.getPost().getPostsId().equals(postsId))
+                .map(LikesEntity::getLikeId)
+                .findFirst().orElse(null);
     }
 }

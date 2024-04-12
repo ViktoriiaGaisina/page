@@ -2,6 +2,7 @@ package com.eazybytes.page.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ComentEntity {
     private Long comentId;
     private String name;
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    private LocalDate createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "posts_id_fk")

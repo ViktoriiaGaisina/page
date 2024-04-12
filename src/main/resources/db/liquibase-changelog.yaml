@@ -8,3 +8,13 @@ databaseChangeLog:
       file: db/changelog/0003_ddl_create_coment.xml
   - include:
       file: db/changelog/0004_ddl_create_likes.xml
+  - include:
+      file: db/changelog/0005_ddl_alter_users.xml
+  - include:
+      file: db/changelog/0006_ddl_alter_posts.xml
+  - include:
+      file: db/changelog/0007_ddl_alter_coment.xml
+  - include:
+      file: db/changelog/0008_ddl_alter_likes.xml
+
+

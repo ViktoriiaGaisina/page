@@ -16,10 +16,10 @@ public class ComentMapper {
         return ComentDTO.builder()
                 .id(comentEntity.getComentId())
                 .name(comentEntity.getName())
-                .likesList(comentEntity.getLikesList().stream()
+                .likesList(comentEntity.getLikesList()!=null?comentEntity.getLikesList().stream()
                         .map(likesMapper::toDto)
-                        .collect(Collectors.toList()))
-                .totalLikeToComents(comentEntity.getLikesList().size())
+                        .collect(Collectors.toList()):null)
+                .totalLikeToComents(comentEntity.getLikesList()!=null?comentEntity.getLikesList().size():null)
                 .build();
     }
     public ComentEntity toEntity(ComentDTO comentDTO) {

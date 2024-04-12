@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -21,7 +22,7 @@ public class LikesEntity {
     private Long likeId;
 
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    private LocalDate createDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "posts_id_fk")
@@ -35,8 +36,5 @@ public class LikesEntity {
     @JoinColumn(name ="users_id_fk")
     private UsersEntity user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="users_id_fk")
-    private PostsEntity posts;
 
 }

@@ -1,6 +1,7 @@
 package com.eazybytes.page.controller;
 
 import com.eazybytes.page.dto.ComentDTO;
+import com.eazybytes.page.dto.CommentPostDTO;
 import com.eazybytes.page.dto.LikesDTO;
 import com.eazybytes.page.dto.PostsDTO;
 import com.eazybytes.page.service.ComentService;
@@ -21,7 +22,7 @@ public class ComentController {
     @Operation(description= "Создать комментарий к посту")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{postsId}/comments")
-    public PostsDTO createComent (@PathVariable Long postsId, @RequestBody ComentDTO comentDTO) {
+    public PostsDTO createComent (@PathVariable Long postsId, @RequestBody CommentPostDTO comentDTO) {
         return comentService.createComent(postsId, comentDTO );
     }
     @Operation(description= "Создать лайк под постом")

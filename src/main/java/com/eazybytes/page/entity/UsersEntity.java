@@ -3,6 +3,7 @@ package com.eazybytes.page.entity;
 import javax.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class UsersEntity {
     private Long id;
     private String name;
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    private LocalDate createDate;
 
     @OneToMany(mappedBy = "user")
     private List<PostsEntity> postsList;

@@ -10,5 +10,4 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface UsersRepository extends JpaRepository<UsersEntity, Long> {
-    long countByCreateDateAfter(LocalDateTime date);
 }

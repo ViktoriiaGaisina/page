@@ -1,15 +1,15 @@
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
-    <changeSet id="0004_ddl_create_likes" author="Vika">
+    <changeSet id="0005_ddl_alter_users" author="Vika">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists  tableName="likes"/>
+                <tableExists  tableName="users"/>
             </not>
         </preConditions>
         <sqlFile dbms="postgresql"
-                 path="db/changelog/sql/0004_ddl_create_likes_table.sql"/>
+                 path="db/changelog/sql/0005_ddl_alter_users_table.sql"/>
         <rollback>
-            <dropTable tableName="likes"/>
+            <dropTable tableName="users"/>
         </rollback>
     </changeSet>
 </databaseChangeLog>
